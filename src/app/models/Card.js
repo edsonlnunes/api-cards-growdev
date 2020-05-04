@@ -7,7 +7,7 @@ class Card extends Model {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
-          autoIncrement: false,
+          autoIncrement: true,
         },
         title: Sequelize.STRING,
         content: Sequelize.STRING,
@@ -16,12 +16,6 @@ class Card extends Model {
     );
 
     return this;
-  }
-
-  static async nextId() {
-    const nextId = await Card.max('id');
-
-    return nextId + 1;
   }
 }
 

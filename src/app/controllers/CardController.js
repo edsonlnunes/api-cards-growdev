@@ -13,16 +13,7 @@ class CardController {
   }
 
   async store(req, res) {
-    const { title, content } = req.body;
-
-    const nextId = await Card.nextId();
-
-    const card = await Card.create({
-      id: nextId,
-      title,
-      content,
-    });
-
+    const card = await Card.create(req.body);
     res.json(card);
   }
 
