@@ -1,4 +1,4 @@
-const  path = require('path');
+const path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
@@ -14,10 +14,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader' }
-        ]
-      }
-    ]
-  }
-}
+        use: [{ loader: 'babel-loader' }],
+      },
+    ],
+  },
+};
