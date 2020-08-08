@@ -18,6 +18,8 @@ routes.post('/login', AuthController.store);
 
 routes.use(authMiddleware);
 
+routes.put('/users', UserController.update)
+
 routes.get('/cards', CardController.index);
 routes.get('/cards/:id', checkCard, CardController.show);
 routes.post('/cards', CardController.store);

@@ -10,6 +10,8 @@ class UserController {
       password: Yup.string()
         .min(6)
         .required(),
+      name: Yup.string()
+        .required()
     });
 
     try {
@@ -36,28 +38,14 @@ class UserController {
   }
 
   async update(req, res) {
-    const { email, oldPassword } = req.body;
-
+    const { name } = req.body;
     const user = await User.findByPk(req.userId);
-
-    if (email !== user.email) {
-      const userExists = await User.findOne({ where: { email } });
-
-      if (userExists) {
-        return res.status(400).json({ error: 'User alredy exists.' });
-      }
-    }
-
-    if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Password invalid.' });
-    }
-
-    const { id, name } = await user.update(req.body);
+    const { id, name: newName, email } = await user.update(req.body);
 
     return res.json({
       id,
-      name,
-      email,
+      name: newName,
+      email
     });
   }
 }
