@@ -16,7 +16,7 @@ routes.get('/', (req, res) => res.json('API-SCRAPBOOK-STRUTURE'));
 routes.post('/users', UserController.store);
 routes.post('/login', AuthController.store);
 
-routes.use(authMiddleware);
+// routes.use(authMiddleware);
 
 routes.put('/users', UserController.update)
 
