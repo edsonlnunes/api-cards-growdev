@@ -4,6 +4,10 @@ class CardController {
   async index(req, res) {
     const cards = await Card.findAll();
 
+    if (!cards || cards.length == 0) {
+      res.status(404).json();
+    }
+
     return res.json(cards);
   }
 

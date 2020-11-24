@@ -6,7 +6,7 @@ export default async (req, res, next) => {
   const card = await Card.findByPk(id);
 
   if (!card) {
-    return res.json({ error: 'Card not found.' });
+    return res.status(404).json({ error: 'Card not found.' });
   }
 
   req.card = card;
