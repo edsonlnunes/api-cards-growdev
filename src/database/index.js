@@ -16,10 +16,7 @@ class Database {
     try {
       this.connection = new Sequelize(process.env.DATABASE_URL, dataBaseConfig);
 
-      console.log('connection ', this.connection)
-
       models.map(model => {
-        console.log(model);
         model.init(this.connection)
       });
 
