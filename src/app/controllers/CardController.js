@@ -5,6 +5,7 @@ class CardController {
     let cards;
     try {
       cards = await Card.findAll()
+
     } catch (error) {
       print('error aq ', error)
     }

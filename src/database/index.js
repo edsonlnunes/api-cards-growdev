@@ -17,7 +17,12 @@ class Database {
       this.connection = new Sequelize(process.env.DATABASE_URL, dataBaseConfig);
 
       models.map(model => {
-        model.init(this.connection)
+        try {
+          model.init(this.connection)
+
+        } catch (error) {
+          console.log('DEU EROO NO INIT, ', error)
+        }
       });
 
     } catch (error) {
