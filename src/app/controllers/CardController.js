@@ -4,7 +4,7 @@ class CardController {
   async index(req, res) {
     let cards;
     try {
-      Card.findAll().then(cards_ => print('buscou os cards', cards_)).catch(e => console.log('error a ', e));
+      cards = await Card.findAll()
     } catch (error) {
       print('error aq ', error)
     }
