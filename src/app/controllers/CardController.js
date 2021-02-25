@@ -2,13 +2,16 @@ import Card from '../models/Card';
 
 class CardController {
   async index(req, res) {
+    print('chegou no index')
     const cards = await Card.findAll();
+    print('pegou os cards')
 
     if (!cards || cards.length == 0) {
+      print('entrou no if')
       res.status(404).json();
     }
 
-    return res.json(cards);
+    return res.status(200).json(cards);
   }
 
   async show(req, res) {
