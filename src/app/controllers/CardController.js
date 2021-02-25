@@ -1,28 +1,14 @@
 import Card from '../models/Card';
-import { Client } from 'pg'
 
 class CardController {
   async index(req, res) {
-    const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true });
+    const cards = await Card.findAll();
 
-    try {
-      await client.connect()
-    } catch (error) {
-      return res.status(500).json({ error: 'ERRO_CONEXAO_BANCO' });
+    if (!cards || cards.length == 0) {
+      return res.status(404).json();
     }
 
-
-    try {
-      const { rowCount, rows } = await client.query('SELECT * FROM cards');
-      if (rowCount == 0) {
-        return res.status(404).json();
-      }
-
-      return res.status(200).json(rows);
-    } catch (error) {
-      console.log(error)
-      return res.status(500).json({ error: 'ERRO_RECUPERAR_CARDS' });
-    }
+    return res.json(cards);
   }
 
   async show(req, res) {
