@@ -5,7 +5,7 @@ import UserController from './app/controllers/UserController';
 import AuthController from './app/controllers/AuthController';
 import CardController from './app/controllers/CardController';
 
-import authMiddleware from './app/middlewares/auth';
+// import authMiddleware from './app/middlewares/auth';
 import checkCard from './app/middlewares/checkCard';
 
 const routes = Router();
