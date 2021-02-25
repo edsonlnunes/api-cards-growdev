@@ -2,12 +2,12 @@ import Card from '../models/Card';
 
 class CardController {
   async index(req, res) {
-    print('chegou no index')
+    console.log('chegou no index')
     const cards = await Card.findAll();
-    print('pegou os cards')
+    console.log('pegou os cards')
 
     if (!cards || cards.length == 0) {
-      print('entrou no if')
+      console.log('entrou no if')
       res.status(404).json();
     }
 
