@@ -4,9 +4,13 @@ class CardController {
   async index(req, res) {
     console.log('chegou no index')
     console.log(Card.sequelize);
-
-    const cards = await Card.findAll();
-    console.log('pegou os cards')
+    let cards;
+    try {
+      cards = await Card.findAll();
+      console.log('pegou os cards')
+    } catch (error) {
+      print('error aq ', error)
+    }
 
     if (!cards || cards.length == 0) {
       console.log('entrou no if')
