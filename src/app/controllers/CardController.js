@@ -3,6 +3,7 @@ import Card from '../models/Card';
 class CardController {
   async index(req, res) {
     console.log('chegou no index')
+    console.log(Card);
 
     const cards = await Card.findAll();
     console.log('pegou os cards')

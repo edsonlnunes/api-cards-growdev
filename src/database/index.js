@@ -18,7 +18,10 @@ class Database {
 
       console.log('connection ', this.connection)
 
-      models.map(model => model.init(this.connection));
+      models.map(model => {
+        console.log(model);
+        model.init(this.connection)
+      });
 
     } catch (error) {
       console.log('ERROR SEQUELIZE ', error)
