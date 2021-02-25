@@ -3,7 +3,6 @@ import Card from '../models/Card';
 class CardController {
   async index(req, res) {
     console.log('chegou no index')
-    console.log(Card.sequelize);
     let cards;
     try {
       cards = await Card.findAll();
