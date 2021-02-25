@@ -13,9 +13,16 @@ class Database {
   }
 
   init() {
-    this.connection = new Sequelize(process.env.DATABASE_URL, dataBaseConfig);
+    try {
+      this.connection = new Sequelize(process.env.DATABASE_URL, dataBaseConfig);
 
-    models.map(model => model.init(this.connection));
+      console.log('connection ', this.connection)
+
+      models.map(model => model.init(this.connection));
+
+    } catch (error) {
+      console.log('ERROR SEQUELIZE ', error)
+    }
   }
 }
 

@@ -12,7 +12,7 @@ const routes = Router();
 
 routes.use(cors());
 
-routes.get('/', (req, res) => res.json('API-SCRAPBOOK-STRUTURE'));
+routes.get('/', (req, res) => res.json('API-CARDS'));
 routes.post('/users', UserController.store);
 routes.post('/login', AuthController.store);
 
