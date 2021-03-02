@@ -17,8 +17,12 @@ class CardController {
   }
 
   async store(req, res) {
-    const card = await Card.create(req.body);
-    res.json(card);
+    try {
+      const card = await Card.create(req.body);
+      res.json(card);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 
   async update(req, res) {
